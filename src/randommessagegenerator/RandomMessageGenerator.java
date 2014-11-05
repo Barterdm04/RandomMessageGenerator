@@ -31,13 +31,16 @@ public class RandomMessageGenerator {
         messageList.add("Message number six!");
         messageList.add("Message number three!");
         
+        //Set the arraylist to a linked hash set to maintain the order but eliminate duplicates
+        Set<String> messageSet = new LinkedHashSet<String>(messageList);
+        //Set the linked hash set back ot an array list
+        messageList = new ArrayList<String>(messageSet);
         
-        Set<String> MessageSet = new LinkedHashSet<String>(messageList);
-        messageList = new ArrayList<String>(messageList);
-        
+        //Get the random set to nanotime
         Random RandomGenerator = new Random(System.nanoTime());
+        //Determine random number
         int randomNumber = RandomGenerator.nextInt(messageList.size());
-        String randomMessage = (String)messageList.get(randomNumber);  
+        String randomMessage = messageList.get(randomNumber);  
         System.out.println();
         
         
